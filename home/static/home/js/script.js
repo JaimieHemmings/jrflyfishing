@@ -31,6 +31,7 @@ window.addEventListener('mousemove', (e) => {
 
 // default three js setup
 const scene = new THREE.Scene();
+const scene2 = new THREE.Scene();
 
 // Orthographic camera
 let frustumSize = sizes.height;
@@ -53,7 +54,7 @@ document.body.appendChild(renderer.domElement);
 
 const planeGeometry = new THREE.PlaneGeometry(100, 100, 1, 1);
 let meshes = [];
-let maxCount = 50;
+let maxCount = 200;
 for  (let i = 0; i < maxCount; i++) {
     // Create a plane
     const material = new THREE.MeshBasicMaterial({
@@ -93,40 +94,39 @@ window.addEventListener('resize', () => {
 
 const setNewWave = (x, y, index) => {
     meshes[index].visible = true;
+    meshes[index].scale.x = 0.4;
+    meshes[index].scale.y = 0.4;
     meshes[index].position.x = x;
     meshes[index].position.y = y;
-    meshes[index].material.opacity = 1;
+    meshes[index].material.opacity = 0.2;
     meshes[index].material.needsUpdate = true;
-    setTimeout(() => {
-        meshes[index].visible = false;
-    }, 1000);
 };
 
-// Function to track mouse position
+// Track mouse position and update wave if cursor moved more than 1px in both x and y directions
 let trackMousepos = () => {
-    if (Math.abs(mousePos.x - prevMousePos.x) > 100 && Math.abs(mousePos.y - prevMousePos.y) > 100)
-    {
+    if (Math.abs(mousePos.x - prevMousePos.x) > 1 || Math.abs(mousePos.y - prevMousePos.y) > 1) {
         currentWave = (currentWave + 1) % maxCount;
         setNewWave(mousePos.x, mousePos.y, currentWave);
-    } 
+    }
+    prevMousePos.x = mousePos.x;
+    prevMousePos.y = mousePos.y;
 };
 
 
 // animate the cube
 const animate = function () {
     requestAnimationFrame(animate);
-
     trackMousepos();
-
-    // Update the position of the planes
+    // Update the properties of visible meshes
     meshes.forEach((mesh) => {
-        mesh.rotation.z += 0.01;
-        mesh.material.opacity *= 0.98;
-        mesh.scale.x += 0.01;
-        mesh.scale.y += 0.01;
+        if (mesh.visible) {
+            mesh.rotation.z += Math.random() / 100;
+            mesh.material.opacity *= 0.98;
+            mesh.scale.x = 0.98 * mesh.scale.x + 0.1;
+            mesh.scale.y = 0.98 * mesh.scale.y + 0.1;
+        }
     });
-
     renderer.render(scene, camera);
 };
-
+// Start the animation loop
 animate();
