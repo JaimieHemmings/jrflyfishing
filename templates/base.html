@@ -2,13 +2,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% block meta %}
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JR Fly Fishing</title>
+  {% endblock %}
+
+  {% block extra_meta %}
+  {% endblock %}
+
+  {% block core_css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% endblock %}
+
+  {% block extra_css %}
+  {% endblock %}
+
+  {% block core_js %}
+  {% endblock %}
+
+  {% block extra_js %}
+  {% endblock %}
+
+  <title>JR Fly Fishing {% block extra_title %}{% endblock %}</title>
 </head>
 <body>
+
+  {% if messages %}
+    <div class="message-container"></div>
+  {% endif %}
+
   {% block content %}
+  {% endblock %}
+
+  {% block postload_js %}
   {% endblock %}
 </body>
 </html>
