@@ -87,9 +87,16 @@ window.addEventListener('resize', () => {
     sizes.height = window.innerHeight;
 
     camera.aspect = sizes.width / sizes.height;
-    camera.updateProjectionMatrix();
 
+    
+    frustumSize = sizes.height;
+    aspect = sizes.width / sizes.height;
+    camera.left = frustumSize * aspect / -2;
+    camera.right = frustumSize * aspect / 2;
+    camera.top = frustumSize / 2;
+    camera.bottom = frustumSize / -2;
     renderer.setSize(sizes.width, sizes.height);
+    camera.updateProjectionMatrix();
 });
 
 const setNewWave = (x, y, index) => {
@@ -113,7 +120,61 @@ let trackMousepos = () => {
 };
 
 
-// animate the cube
+// Create a render target
+const waveRenderTarget = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, {
+    minFilter: THREE.LinearFilter,
+    magFilter: THREE.LinearFilter,
+    format: THREE.RGBAFormat,
+});
+
+// Function to render the wave simulation to the render target
+const renderWaveSimulationToTexture = () => {
+    renderer.setRenderTarget(waveRenderTarget);
+    renderer.render(scene, camera);
+    renderer.setRenderTarget(null);
+};
+
+// Vertex shader
+const vertexShader = `
+    varying vec2 vUv;
+    void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+`;
+
+// Fragment shader
+const fragmentShader = `
+    uniform sampler2D uImage;
+    uniform sampler2D uDisplacement;
+    varying vec2 vUv;
+    void main() {
+        vec2 displacement = texture2D(uDisplacement, vUv).rg * 0.1;
+        vec2 uv = vUv + displacement;
+        gl_FragColor = texture2D(uImage, uv);
+    }
+`;
+
+// Create the shader material
+const imageMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+        uImage: { value: new THREE.TextureLoader().load(bgImage) },
+        uDisplacement: { value: waveRenderTarget.texture }
+    },
+    vertexShader: vertexShader,
+    fragmentShader: fragmentShader
+});
+
+// Create a plane geometry
+const bgGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight);
+
+// Create a mesh with the plane geometry and shader material
+const imagePlane = new THREE.Mesh(bgGeometry, imageMaterial);
+
+// Add the image plane to the scene
+scene2.add(imagePlane);
+
+// animate the scene
 const animate = function () {
     requestAnimationFrame(animate);
     trackMousepos();
@@ -126,7 +187,9 @@ const animate = function () {
             mesh.scale.y = 0.98 * mesh.scale.y + 0.1;
         }
     });
-    renderer.render(scene, camera);
+    // Render the wave simulation to the texture
+    renderWaveSimulationToTexture();
+    renderer.render(scene2, camera);
 };
 // Start the animation loop
 animate();
