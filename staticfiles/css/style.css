@@ -1,4 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+a {
+  font-family: "Fragment Mono", monospace;
+}
+
+.dark-bg {
+  background-color: rgba(0,0,0,0.4);
+}
+
+span.line {
+  margin-top: 50px;
+  display: block;
+  width: 185px;
+  height: 2px;
+  background-color: #fff;
 }

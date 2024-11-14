@@ -1,0 +1,19 @@
+{% load static %}
+<section class="h-screen w-screen relative">
+  <div class="p-5 py-[5rem] w-full h-full dark-bg z-20 relative flex flex-col justify-center">
+    <div class="container mx-auto">
+      <h1 class="font-bold text-5xl md:text-8xl text-white pb-[75px]">
+        JR FLY FISHING
+      </h1>
+      <p class="max-w-[80%] md:max-w-[50%] text-white text-base md:text-2xl font-medium">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, nihil sint labore eius recusandae tempore necessitatibus quidem in voluptatum! Voluptas doloribus ratione culpa quia aperiam? Voluptates reiciendis optio ducimus sequi.
+      </p>
+      <span class="line"></span>
+      <div class="button-container mt-[3rem] flex flex-row gap-8">
+        <a href="#" class="button-arrow">Learn More <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+        <a href="#" class="button-arrow">Get In Touch <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+      </div>
+    </div>
+  </div>
+  <canvas id="webgl" class="absolute top-0 left-0 z-10"></canvas>
+</section>

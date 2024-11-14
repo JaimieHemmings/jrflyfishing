@@ -8,7 +8,7 @@ const DEFAULTS = {
     SCALE_INCREMENT: 0.108,
     OPACITY_DECAY: 0.98,
     DISPLACEMENT_STRENGTH: 0.1,
-    RIPPLE_BRIGHTNESS: 0.3  // Controls the intensity of the white tint
+    RIPPLE_BRIGHTNESS: 0.3
   };
 
   const shaders = {
@@ -365,7 +365,7 @@ class WaveEffect {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         this.handleResize();
-      }, 100);
+      }, 10);
     });
 
     // Window state change handler

@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block content %}
-<canvas id="webgl"></canvas>
+
+{% include 'partials/navigation.html' %}
+{% include 'partials/hero.html' %}
+{% include 'partials/blog-feed.html' %}
+
 {% endblock %}
 
 {% block extra_js %}
@@ -17,7 +21,7 @@
     </script>
     <script>
       var brushFile = "{% static 'home/img/brush01.png' %}";
-      var bgImage = "{% static 'home/img/river-scenery.jpg' %}";
+      var bgImage = "{% static 'home/img/james-fishing.webp' %}";
     </script>
     <script src="{% static 'home/js/script.js' %}" type="module"></script>  
 {% endblock %}
