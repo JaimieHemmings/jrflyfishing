@@ -11,7 +11,7 @@ a {
 }
 
 .dark-bg {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.1);
 }
 
 span.line {
@@ -37,5 +37,20 @@ span.line {
 
   &:hover img {
     transform: rotate(45deg);
+  }
+}
+
+.cats {
+  padding: 20px 0;
+
+  a {
+    border: 1px solid #eee;
+    padding: 2px 15px;
+    border-radius: 15px;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #eee;
+    }
   }
 }
