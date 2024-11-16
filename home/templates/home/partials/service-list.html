@@ -1,104 +1,47 @@
 {% load static %}
-
 <section class="py-[5rem] relative">
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve" class="absolute top-0 left-0 z-0 w-full h-full">
-    <g transform="matrix(1 0 0 1 540 540)" id="35127313-be31-45c1-a186-d6a1032e292b"  >
-    <rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
-    </g>
-    <g transform="matrix(1 0 0 1 540 540)" id="a5bd0c61-d601-47e0-bb8c-2bc1eeab67df"  >
-    </g>
-    <g transform="matrix(16.72 0 0 21.72 540 531.8)" id="sw-js-blob-svg"  >
-    <path style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(238,238,238); fill-rule: nonzero; opacity: 1;"  transform=" translate(-8.08, -1.46)" d="M 32 -20.4 C 39.4 -16.3 41.8 -3.1 37.8 6.4 C 33.9 15.9 23.6 21.7 14.3 23.9 C 5.1 26.1 -3 24.7 -10 21.2 C -17 17.7 -22.8 12.1 -23.5 6.2 C -24.1 0.3 -19.6 -5.9 -14.9 -9.4 C -10.1 -13 -5.1 -13.9 3.6 -16.8 C 12.3 -19.7 24.7 -24.6 32 -20.4 Z" stroke-linecap="round" />
-    </g>
-  </svg>
-  <div class="container mx-auto relative z-10">
-    <div class="grid grid-cols-2 grid-rows-4 gap-4 p-4 md:grid-cols-4 md:grid-rows-auto">
-      <div class="col-span-2 row-span-2 p-4">
-        <h2 class="text-4xl md:text-8xl font-medium pb-5">Services We Provide</h2>
+  {% include 'home/partials/svg-drop.html' %}
+  <div class="container mx-auto relative z-20 p-5">
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="basis-1/2">
+        <h2 class="text-2xl md:text-6xl font-medium pb-5 max-w-[80%]">Services We Provide</h2>
         <p class="pb-5">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem commodi doloremque iure deleniti impedit explicabo error illum aliquam, molestias, debitis, ab unde. Nemo temporibus error harum quasi alias. Magni, saepe?</p>
         <img src="{% static 'home/img/placeholder.webp' %}" alt="Placeholder Image" class="h-auto max-w-full rounded-xl" />
       </div>
-      <div>
-        <div class="flex flex-col justify-center w-full h-full rounded-xl p-5 hover:drop-shadow hover:bg-white transition-all">
-          <svg class="w-6 h-6 text-gray-800 mb-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.99 9H15M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7 13c0 1 .507 2.397 1.494 3.216a5.5 5.5 0 0 0 7.022 0C16.503 15.397 17 14 17 13c0 0-1.99 1-4.995 1S7 13 7 13Z"/>
-          </svg>
-          
-          <h3 class="font-semibold pb-3">Title Text</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+      <div class="basis-1/2 gap-4 grid grid-cols-2 justify-between">
+        <div class="hover:drop-shadow hover:bg-white transition-all rounded-xl p-5">
+          <h3 class="font-semibold pb-3">Planning</h3>
+          <p>I tailor the guided fishing trips to your skill level, preferences and goals.</p>
         </div>
-      </div>
-      <div>
-        <div class="flex flex-col justify-center w-full h-full rounded-xl p-5 hover:drop-shadow hover:bg-white transition-all">
-          <svg class="w-6 h-6 text-gray-800 mb-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.99 9H15M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7 13c0 1 .507 2.397 1.494 3.216a5.5 5.5 0 0 0 7.022 0C16.503 15.397 17 14 17 13c0 0-1.99 1-4.995 1S7 13 7 13Z"/>
-          </svg>
-          
-          <h3 class="font-semibold pb-3">Title Text</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <div class="hover:drop-shadow hover:bg-white transition-all rounded-xl p-5">
+          <h3 class="font-semibold pb-3">Gear Consultation</h3>
+          <p>Advice on (and access to) rods, reels, lines, flies and other equipment</p>
         </div>
-      </div>
-      <div>
-        <div class="flex flex-col justify-center w-full h-full rounded-xl p-5 hover:drop-shadow hover:bg-white transition-all">
-          <svg class="w-6 h-6 text-gray-800 mb-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.99 9H15M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7 13c0 1 .507 2.397 1.494 3.216a5.5 5.5 0 0 0 7.022 0C16.503 15.397 17 14 17 13c0 0-1.99 1-4.995 1S7 13 7 13Z"/>
-          </svg>
-          
-          <h3 class="font-semibold pb-3">Title Text</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <div class="hover:drop-shadow hover:bg-white transition-all rounded-xl p-5">
+          <h3 class="font-semibold pb-3">Planning</h3>
+          <p>I tailor the guided fishing trips to your skill level, preferences and goals.</p>
         </div>
-      </div>
-      <div>
-        <div class="flex flex-col justify-center w-full h-full rounded-xl p-5 hover:drop-shadow hover:bg-white transition-all">
-          <svg class="w-6 h-6 text-gray-800 mb-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.99 9H15M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7 13c0 1 .507 2.397 1.494 3.216a5.5 5.5 0 0 0 7.022 0C16.503 15.397 17 14 17 13c0 0-1.99 1-4.995 1S7 13 7 13Z"/>
-          </svg>
-          
-          <h3 class="font-semibold pb-3">Title Text</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <div class="hover:drop-shadow hover:bg-white transition-all rounded-xl p-5">
+          <h3 class="font-semibold pb-3">Gear Consultation</h3>
+          <p>Advice on (and access to) rods, reels, lines, flies and other equipment</p>
         </div>
-      </div>
-      <div>
-        <div class="flex flex-col justify-center w-full h-full rounded-xl p-5 hover:drop-shadow hover:bg-white transition-all">
-          <svg class="w-6 h-6 text-gray-800 mb-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.99 9H15M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7 13c0 1 .507 2.397 1.494 3.216a5.5 5.5 0 0 0 7.022 0C16.503 15.397 17 14 17 13c0 0-1.99 1-4.995 1S7 13 7 13Z"/>
-          </svg>
-          
-          <h3 class="font-semibold pb-3">Title Text</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <div class="hover:drop-shadow hover:bg-white transition-all rounded-xl p-5">
+          <h3 class="font-semibold pb-3">Knot Tying and Rigging</h3>
+          <p>Assisting with fly tying, leaders, tippets, and other gear setup</p>
         </div>
-      </div>
-      <div>
-        <div class="flex flex-col justify-center w-full h-full rounded-xl p-5 hover:drop-shadow hover:bg-white transition-all">
-          <svg class="w-6 h-6 text-gray-800 mb-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.99 9H15M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7 13c0 1 .507 2.397 1.494 3.216a5.5 5.5 0 0 0 7.022 0C16.503 15.397 17 14 17 13c0 0-1.99 1-4.995 1S7 13 7 13Z"/>
-          </svg>
-          
-          <h3 class="font-semibold pb-3">Title Text</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <div class="hover:drop-shadow hover:bg-white transition-all rounded-xl p-5">
+          <h3 class="font-semibold pb-3">Fish Handling</h3>
+          <p>Demonstrating proper catch-and-release techniques to minimize fish stress and injury</p>
         </div>
-      </div>
-      <div>
-        <div class="flex flex-col justify-center w-full h-full rounded-xl p-5 hover:drop-shadow hover:bg-white transition-all">
-          <svg class="w-6 h-6 text-gray-800 mb-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.99 9H15M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7 13c0 1 .507 2.397 1.494 3.216a5.5 5.5 0 0 0 7.022 0C16.503 15.397 17 14 17 13c0 0-1.99 1-4.995 1S7 13 7 13Z"/>
-          </svg>
-          
-          <h3 class="font-semibold pb-3">Title Text</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <div class="hover:drop-shadow hover:bg-white transition-all rounded-xl p-5">
+          <h3 class="font-semibold pb-3">Nature Education</h3>
+          <p>Learn about the local ecosystem and wildlife</p>
         </div>
-      </div>
-      <div>
-        <div class="flex flex-col justify-center w-full h-full rounded-xl p-5 hover:drop-shadow hover:bg-white transition-all">
-          <svg class="w-6 h-6 text-gray-800 mb-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.99 9H15M8.99 9H9m12 3a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM7 13c0 1 .507 2.397 1.494 3.216a5.5 5.5 0 0 0 7.022 0C16.503 15.397 17 14 17 13c0 0-1.99 1-4.995 1S7 13 7 13Z"/>
-          </svg>
-          
-          <h3 class="font-semibold pb-3">Title Text</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+        <div class="hover:drop-shadow hover:bg-white transition-all rounded-xl p-5">
+          <h3 class="font-semibold pb-3">Advanced Techniques</h3>
+          <p>Learn specific methods like nymphing, dry fly fishing, or streamer techniques</p>
         </div>
       </div>
     </div>
-    
   </div>
 </section>

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # Tailwind
     'tailwind',
     'theme',
+    'django_browser_reload',
 
     # Custom Apps
     'home',
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'jrflyfishing.urls'

@@ -3,10 +3,11 @@
 
 {% block content %}
 
-{% include 'partials/navigation.html' %}
-{% include 'partials/hero.html' %}
-{% include 'partials/blog-feed.html' %}
+{% include 'home/partials/hero.html' %}
+{% include 'home/partials/blog-feed.html' %}
 {% include 'home/partials/service-list.html' %}
+{% include 'home/partials/who-are-we.html' %}
+{% include 'home/partials/testimonials.html' %}
 
 {% endblock %}
 
@@ -24,5 +25,6 @@
       var brushFile = "{% static 'home/img/brush01.png' %}";
       var bgImage = "{% static 'home/img/james-fishing.webp' %}";
     </script>
-    <script src="{% static 'home/js/script.js' %}" type="module"></script>  
+    <script src="{% static 'home/js/script.js' %}" type="module"></script> 
+    <script src="{% static 'js/index.js' %}" defer></script>  
 {% endblock %}

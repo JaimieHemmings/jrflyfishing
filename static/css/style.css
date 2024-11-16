@@ -6,8 +6,12 @@
   font-style: normal;
 }
 
-a {
+a,h2,h3,h4,h5,h6 {
   font-family: "Fragment Mono", monospace;
+}
+
+p {
+  margin-bottom: 15px;
 }
 
 .dark-bg {
@@ -54,3 +58,33 @@ span.line {
     }
   }
 }
+
+.bg-curve {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: -40%;
+  transform: translate(0, -50%);
+}
+
+/* Carousel Styles */
+.carousel-container {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item {
+  flex: 0 0 50%; /* 50% width for 2 items, minus gap */
+  box-sizing: border-box;
+}
+
+.carousel-item-content {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
