@@ -16,6 +16,7 @@ SECRET_KEY =  os.environ.get("SECRET_KEY", 'django-insecure-k5exwfb-#iy)f7sfh#o#
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "https://jrflyfishing-729c2f10b107.herokuapp.com",
     ".herokuapp.com",
     '127.0.0.1',
     'localhost',
@@ -34,6 +35,7 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'ckeditor',
+    'storages',
 
     # AllAuth
     'allauth',
@@ -181,6 +183,36 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+if "USE_AWS" in os.environ:
+    print("Using S3")
+
+    # cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        "Expires": "Thu, 31 Dec 2099 20:00:00 GMT",
+        "CacheControl": "max-age=94608000",
+    }
+
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_S3_REGION_NAME = "eu-north-1"
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    # Static and media files
+    STATICFILES_STORAGE = "custom_storages.StaticStorage"
+    STATICFILES_LOCATION = "static"
+    DEFAULT_FILE_STORAGE = "custom_storages.MediaStorage"
+    MEDIAFILES_LOCATION = "media"
+
+    # Override static and media URLs in production
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/"
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/"
+
+    CSRF_TRUSTED_ORIGINS = [
+    'https://jrflyfishing-729c2f10b107.herokuapp.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000/',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
