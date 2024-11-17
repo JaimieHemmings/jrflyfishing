@@ -18,6 +18,21 @@ p {
   background-color: rgba(0,0,0,0.1);
 }
 
+.bg-grey {
+  background-color: #f6f6f6;
+}
+
+.dark-bg-overlay:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.3);
+}
+
 span.line {
   margin-top: 50px;
   display: block;

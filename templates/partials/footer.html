@@ -1,11 +1,11 @@
 {% load static %}
 
-<section class="py-[5rem]">
-  <div class="container">
+<section class="py-[5rem] bg-grey">
+  <div class="container mx-auto p-5">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div class="text-center">
         <h3 class="text-2xl font-bold">Links</h3>
-        <ul>
+        <ul class="mt-4">
           <li><a href="#">Work</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Services</a></li>
@@ -15,12 +15,22 @@
       </div>
       <div class="text-center">
         <h3 class="text-2xl font-bold">Contact</h3>
-        <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, quae.</p>
+        <p class="mt-4">Use the contact form to get in touch directly and we'll get back to you as soon as possible!</p>
+        <a href="#" class="button-arrow">Get In Touch <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
       </div>
       <div class="text-center">
         <h3 class="text-2xl font-bold">Social</h3>
-        <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, quae.</p>
+        <ul class="mt-4">
+          <li><a href="#">MAIL</a></li>
+          <li><a href="#">TW</a></li>
+          <li><a href="#">IG</a></li>
+          <li><a href="#">LI</a></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
+<section class="py-4">
+  <div class="container mx-auto">
+    <p class="text-center">© 2024 JR Fly Fishing. All Rights Reserved.</p>
+  </div>

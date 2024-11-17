@@ -9,6 +9,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% endblock %}
 
+  <meta name="description" content="{% block meta_desc %}{% endblock %}">
+
+  <link rel="icon" type="image/png" href="{% static 'img/favicons/favicon-96x96.png' %}" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="{% static 'img/favicons/favicon.svg' %}" />
+  <link rel="shortcut icon" href="{% static 'img/favicons/favicon.ico' %}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}" />
+  <link rel="manifest" href="{% static 'img/favicons/site.webmanifest' %}" />
+
   {% block extra_meta %}
   {% endblock %}
 
