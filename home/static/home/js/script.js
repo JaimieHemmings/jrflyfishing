@@ -4,13 +4,28 @@ import * as THREE from 'three';
 const canvas = document.getElementById('webgl');
 const sizes = { width: window.innerWidth, height: window.innerHeight };
 
-// Track mouse position and movement
+// Track mouse position and autonomous wave source position
 const mousePos = { x: 0, y: 0 };
 const prevMousePos = { x: 0, y: 0 };
+const waveSource = { 
+    x: 0, 
+    y: 0,
+    targetX: 0,
+    targetY: 0,
+    velocity: { x: 0, y: 0 }
+};
 let currentWave = 0;
+let isMouseMoving = false;
+let lastMouseMoveTime = 0;
+
+// Mouse movement detection
 window.addEventListener('mousemove', (e) => {
     mousePos.x = e.clientX - sizes.width / 2;
     mousePos.y = sizes.height / 2 - e.clientY;
+    isMouseMoving = true;
+    lastMouseMoveTime = performance.now();
+    waveSource.targetX = mousePos.x;
+    waveSource.targetY = mousePos.y;
 });
 
 // Three.js scene setup
@@ -34,7 +49,7 @@ camera.lookAt(0, 0, 0);
 // Load brush texture
 const brushTexture = new THREE.TextureLoader().load(brushFile);
 
-// Shader setup
+// Shader setup remains the same
 const vertexShader = `
     varying vec2 vUv;
     void main() {
@@ -47,7 +62,7 @@ const fragmentShader = `
     uniform sampler2D uDisplacement;
     varying vec2 vUv;
     void main() {
-        vec2 displacement = texture2D(uDisplacement, vUv).rg * 0.1;
+        vec2 displacement = texture2D(uDisplacement, vUv).rg * 0.04;
         vec2 uv = vUv + displacement;
         gl_FragColor = texture2D(uImage, uv);
     }
@@ -73,19 +88,48 @@ for (let i = 0; i < maxCount; i++) {
 const setNewWave = (x, y, index) => {
     const plane = meshes[index];
     plane.visible = true;
-    plane.scale.set(0.4, 0.4, 1);
+    plane.scale.set(0.2, 0.2, 1);
     plane.position.set(x, y, 0);
     plane.material.opacity = 0.2;
 };
 
-// Update mouse movement for waves
-const trackMousePos = () => {
-    if (Math.abs(mousePos.x - prevMousePos.x) > 1 || Math.abs(mousePos.y - prevMousePos.y) > 1) {
-        currentWave = (currentWave + 1) % maxCount;
-        setNewWave(mousePos.x, mousePos.y, currentWave);
+// Autonomous wave movement
+const updateWaveSource = (deltaTime) => {
+    const now = performance.now();
+    const mouseInactivityThreshold = 100; // ms
+    
+    if (now - lastMouseMoveTime > mouseInactivityThreshold) {
+        isMouseMoving = false;
     }
-    prevMousePos.x = mousePos.x;
-    prevMousePos.y = mousePos.y;
+
+    if (!isMouseMoving) {
+        // Create autonomous circular motion
+        const time = now * 0.001;
+        const radius = Math.min(sizes.width, sizes.height) * 0.25;
+        waveSource.targetX = Math.cos(time * 0.5) * radius;
+        waveSource.targetY = Math.sin(time * 0.7) * radius;
+    }
+
+    // Smooth movement towards target
+    const springStrength = 0.1;
+    const dampening = 0.8;
+
+    // Calculate spring physics
+    const dx = waveSource.targetX - waveSource.x;
+    const dy = waveSource.targetY - waveSource.y;
+    
+    waveSource.velocity.x += dx * springStrength;
+    waveSource.velocity.y += dy * springStrength;
+    
+    waveSource.velocity.x *= dampening;
+    waveSource.velocity.y *= dampening;
+    
+    waveSource.x += waveSource.velocity.x;
+    waveSource.y += waveSource.velocity.y;
+
+    // Generate new wave at current position
+    currentWave = (currentWave + 1) % maxCount;
+    setNewWave(waveSource.x, waveSource.y, currentWave);
 };
 
 // Render target for wave simulation
@@ -107,32 +151,23 @@ const imageMaterial = new THREE.ShaderMaterial({
 const imagePlane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), imageMaterial);
 scene2.add(imagePlane);
 
-// Resize the image plane to fill the viewport responsively
+// Responsive image plane scaling
 const updateImagePlaneScale = () => {
-
-    // Image aspect ratio
     const imageAspectRatio = 2000 / 1333;
-
-    // Viewport aspect ratio
     const viewportAspectRatio = sizes.width / sizes.height;
-
     
-    // Ensure the imagePlane always fills the the largest dimension of the viewport and maintains aspect ratio for the other axis
-
-    // If the viewport is wider than the image
     if (viewportAspectRatio > imageAspectRatio) {
-      imagePlane.scale.x = sizes.width;
-      imagePlane.scale.y = 1333 * sizes.width / 2000;
-  } else {
-      imagePlane.scale.y = sizes.height;
-      imagePlane.scale.x = 2000 * sizes.height / 1333;
-  }   
+        imagePlane.scale.x = sizes.width;
+        imagePlane.scale.y = 1333 * sizes.width / 2000;
+    } else {
+        imagePlane.scale.y = sizes.height;
+        imagePlane.scale.x = 2000 * sizes.height / 1333;
+    }   
 };
 updateImagePlaneScale();
 
 // Resize event listener
 window.addEventListener('resize', () => {
-    // Update the camera including the fustrums
     sizes.width = window.innerWidth;
     sizes.height = window.innerHeight;
     renderer.setSize(sizes.width, sizes.height);
@@ -142,15 +177,18 @@ window.addEventListener('resize', () => {
     camera.top = frustumSize / 2;
     camera.bottom = frustumSize / -2;
     camera.updateProjectionMatrix();
-
-    // Update the image plane scale
     updateImagePlaneScale();
 });
 
 // Animation loop
+let lastTime = performance.now();
 const animate = () => {
+    const currentTime = performance.now();
+    const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
+    lastTime = currentTime;
+
     requestAnimationFrame(animate);
-    trackMousePos();
+    updateWaveSource(deltaTime);
     
     // Animate visible wave meshes
     meshes.forEach((mesh) => {
