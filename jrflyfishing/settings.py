@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY =  os.environ.get("SECRET_KEY", 'django-insecure-k5exwfb-#iy)f7sfh#o#m(m*=p$yhsi)zs4f4fnjw1+@^ow%r!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     "https://jrflyfishing-729c2f10b107.herokuapp.com",
