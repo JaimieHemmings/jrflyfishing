@@ -15,20 +15,29 @@
 
 {% endblock %}
 
+{% block extra_css %}
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+{% endblock %}
+
 {% block extra_js %}
-    <script type="importmap">
+  <script type="importmap">
+    {
+      "imports":
       {
-        "imports":
-        {
-          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
-          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
-        }
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
       }
-    </script>
-    <script>
-      var brushFile = "{% static 'home/img/brush01.png' %}";
-      var bgImage = "{% static 'home/img/james-fishing.webp' %}";
-    </script>
-    <script src="{% static 'home/js/script.js' %}" type="module"></script> 
-    <script src="{% static 'js/index.js' %}" defer></script>  
+    }
+  </script>
+  <script>
+    var brushFile = "{% static 'home/img/brush01.png' %}";
+    var bgImage = "{% static 'home/img/james-fishing.webp' %}";
+  </script>
+  <script src="{% static 'home/js/script.js' %}" type="module"></script> 
+  <script src="{% static 'js/index.js' %}" defer></script><script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init();
+    });
+  </script>
 {% endblock %}
