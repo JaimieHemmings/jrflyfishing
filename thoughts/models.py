@@ -49,6 +49,11 @@ class Thought(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     meta_description = models.TextField(help_text='Description of the thought for SEO purposes')
     slug = models.SlugField(max_length=255, help_text='Slug of the thought for SEO purposes')
+    excerpt = models.TextField(
+        max_length="220",
+        help_text='Small snippet of the thought for previews',
+        default='No excerpt provided'
+        )
 
     banner_image = models.ImageField(upload_to=get_path, help_text='Image of the thought')
     thumbnail_image = models.ImageField(upload_to=get_path, help_text='Thumbnail image of the thought')

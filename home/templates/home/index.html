@@ -4,7 +4,9 @@
 {% block content %}
 
 {% include 'home/partials/hero.html' %}
-{% include 'home/partials/blog-feed.html' %}
+{% if homepage_thoughts %}
+  {% include 'home/partials/blog-feed.html' %}
+{% endif %}
 {% include 'home/partials/service-list.html' %}
 {% include 'home/partials/who-are-we.html' %}
 {% if reviews %}
