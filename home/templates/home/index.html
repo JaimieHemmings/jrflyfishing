@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+{% block meta_desc %}
+JR Flyfishing provides guided fishing tours of the best rivers in Cornwall. We offer a range of services including fly fishing lessons, guided fishing trips and more.
+{% endblock %}
 
+{% block title %}
+{% endblock %}
+
+{% block content %}
 {% include 'home/partials/hero.html' %}
 {% if homepage_thoughts %}
   {% include 'home/partials/blog-feed.html' %}
