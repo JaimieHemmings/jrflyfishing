@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'home',
     'thoughts',
     'reviews',
+    'contact',
 ]
 
 TAILWIND_APP_NAME = 'theme'
