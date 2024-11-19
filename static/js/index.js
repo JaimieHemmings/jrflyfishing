@@ -5,7 +5,7 @@ class Carousel {
       this.items = element.querySelectorAll('.carousel-item');
       
       this.currentIndex = 0;
-      this.itemsPerView = 2;
+      this.itemsPerView = window.innerWidth <= 768 ? 1 : 2;
       this.totalSlides = Math.ceil(this.items.length - 1);
 
       // Dragging state

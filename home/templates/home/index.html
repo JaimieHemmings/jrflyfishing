@@ -7,7 +7,9 @@
 {% include 'home/partials/blog-feed.html' %}
 {% include 'home/partials/service-list.html' %}
 {% include 'home/partials/who-are-we.html' %}
-{% include 'home/partials/testimonials.html' %}
+{% if reviews %}
+  {% include 'home/partials/testimonials.html' %}
+{% endif %}
 
 {% endblock %}
 

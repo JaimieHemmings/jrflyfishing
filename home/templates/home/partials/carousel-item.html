@@ -1,16 +1,15 @@
 {% load static %}
-
 <div class="carousel-item p-3">
   <div class="carousel-item-content">
     <svg width="53" height="34" viewBox="0 0 53 34" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-5">
       <path d="M18.1658 34H0.5L15.4589 0H26.8562L18.1658 34ZM43.8096 34H26.1438L41.1027 0H52.5L43.8096 34Z" fill="#DEDEDE"/>
     </svg>              
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, maiores? Alias, sit. Aliquam corporis itaque consequatur explicabo maxime ducimus, eius repudiandae sequi sunt ipsum, iste sit, et recusandae nulla consequuntur.</p>
+    <p>{{ review.content }}</p>
     <hr />
     <div class="flex flex-row justify-start pt-5 align-middle">
-      <img src="{% static 'home/img/face.jpg' %}" alt="" class="rounded-full h-10 w-10" />
+      <img src="{{ review.user_img.url }}" alt="{{ review.name }}" class="rounded-full h-10 w-10" />
       <div class="p-2 px-5">
-        <p>Jennie Kim</p>
+        <p>{{ review.name }}</p>
       </div>
     </div>
   </div>
