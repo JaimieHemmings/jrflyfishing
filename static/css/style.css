@@ -110,3 +110,19 @@ span.line {
   }
 }
 
+/* article styles */
+
+.article-content {
+  p, hr, ol, ul {
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  h2,h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+}

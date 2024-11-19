@@ -3,7 +3,7 @@
   {% for obj in homepage_thoughts %}
   <div class="flex flex-col md:flex-row justify-between gap-4">
     <div class="md:basis-1/2 p-5">
-      <img src="{% static 'home/img/placeholder.webp' %}" alt="Placeholder Image" class="h-auto max-w-full rounded-xl" />
+      <img src="{{ obj.thumbnail_image.url }}" alt="Placeholder Image" class="h-auto max-w-full rounded-xl" />
     </div>
     <div class="md:basis-1/2 flex flex-col justify-center p-5">
       <h2 class="font-bold text-xl py-3">{{obj.title}}</h2>
