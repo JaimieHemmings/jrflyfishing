@@ -116,8 +116,15 @@ class Thought(models.Model):
         )
 
     def save(self, *args, **kwargs):
-        self.slug = self.generate_slug()
-        return super().save(*args, **kwargs)
+        if not self.slug or self.title_has_changed():
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def title_has_changed(self):
+        if not self.pk:
+            return True
+        original = Thought.objects.get(pk=self.pk)
+        return original.title != self.title
 
     def generate_slug(self, save_to_obj=False, add_random_suffix=True):
         generated_slug = slugify(self.title)
