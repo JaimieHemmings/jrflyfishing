@@ -5,11 +5,13 @@ from django.shortcuts import get_object_or_404
 
 
 def thoughts(request):
+    categories = Category.objects.all()
     paginator = Paginator(Thought.objects.all().order_by("-created_at"), 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'categories': categories
     }
     return render(request, 'thoughts/thoughts.html', context)
 

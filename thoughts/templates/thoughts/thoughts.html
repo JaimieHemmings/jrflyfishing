@@ -21,34 +21,57 @@ Discover the latest insights, tips, and stories from the world of fly fishing. E
   </div>
 </section>
 
-<section class="py-[5rem] container mx-auto p-5">
-  {% if page_obj %}
-  {% for obj in page_obj %}
-  <div class="flex flex-col md:flex-row justify-between gap-4 {% if forloop.counter|divisibleby:2 %}md:flex-row-reverse{% endif %}">
-    <div class="md:basis-1/2 p-5">
-      <img src="{{ obj.thumbnail_image.url }}" alt="Placeholder Image" class="h-auto max-w-full rounded-xl" />
-    </div>
-    <div class="md:basis-1/2 flex flex-col justify-center p-5">
-      <h2 class="font-bold text-xl py-3">{{obj.title}}</h2>
-      <div class="flex flex-row gap-4 cats">
-        {% for cat in obj.categories.all %}
+<section class="py-[5rem] container mx-auto p-5 flex flex-col md:flex-row gap-4 justify-between">
+  <div class="basis-4/5">
+    {% if page_obj %}
+    {% for obj in page_obj %}
+    <div class="flex flex-col md:flex-row justify-between gap-4 {% if forloop.counter|divisibleby:2 %}md:flex-row-reverse{% endif %}">
+      <div class="md:basis-1/2 p-5">
+        <img src="{{ obj.thumbnail_image.url }}" alt="Placeholder Image" class="h-auto max-w-full rounded-xl" />
+      </div>
+      <div class="md:basis-1/2 flex flex-col justify-center p-5">
+        <h2 class="font-bold text-xl py-3">{{obj.title}}</h2>
+        <div class="flex flex-row gap-4 cats">
+          {% for cat in obj.categories.all %}
           <a href="{% url 'category_search' cat %}">{{ cat }}</a>
-        {% endfor %}
-      </div>
-      <p>{{ obj.excerpt }}</p>
-      <div class="pt-3">
-        <a href="{% url 'thought_detail' obj.slug %}" class="button-arrow">Read More <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+          {% endfor %}
+        </div>
+        <p>{{ obj.excerpt }}</p>
+        <div class="pt-3">
+          <a href="{% url 'thought_detail' obj.slug %}" class="button-arrow">Read More <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+        </div>
       </div>
     </div>
+    {% endfor %}
+    {% else %}
+    <p>No thoughts found.</p>
+    {% endif %}
   </div>
-  {% endfor %}
-  {% else %}
-  <p>No thoughts found.</p>
+  <div class="basis-1/5 relative">
+    <section class="p-5 sticky top-0">
+      <h2 class="text-xl font-semibold">Categories</h2>
+      <ul class="py-3 cats">
+        {% for cat in categories %}
+        <li class="py-3"><a href="{% url 'category_search' cat %}">{{ cat }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</section>
+<section>
+  {% if is_paginated %}
+  <div class="container mx-auto p-5">
+    <div class="flex flex-row justify-center gap-4">
+      {% if page_obj.has_previous %}
+      <a href="?page=1" class="button-arrow">First <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+      <a href="?page={{ page_obj.previous_page_number }}" class="button-arrow">Previous <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+      {% endif %}
+      <p>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="button-arrow">Next <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+      <a href="?page={{ page_obj.paginator.num_pages }}" class="button-arrow">Last <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+      {% endif %}
+    </div>
   {% endif %}
 </section>
-
-
-
-{% if is_paginated %}
-{% endif %}
 {% endblock %}
