@@ -131,15 +131,6 @@ class Carousel {
   }
 }
 
-// Navigation
-
-const menuBurger = document.querySelector('.menu-burger');
-const menu = document.querySelector('.nav-items');
-
-menuBurger.addEventListener('click', () => {
-    menu.classList.toggle('show');
-});
-
 // Initialize the carousel
 document.addEventListener('DOMContentLoaded', () => {
   const carousel = new Carousel(document.querySelector('.carousel-container'));
