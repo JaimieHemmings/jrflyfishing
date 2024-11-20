@@ -24,7 +24,7 @@ Discover the latest insights, tips, and stories from the world of fly fishing. E
 <section class="py-[5rem] container mx-auto p-5">
   {% if page_obj %}
   {% for obj in page_obj %}
-  <div class="flex flex-col md:flex-row justify-between gap-4">
+  <div class="flex flex-col md:flex-row justify-between gap-4 {% if forloop.counter|divisibleby:2 %}md:flex-row-reverse{% endif %}">
     <div class="md:basis-1/2 p-5">
       <img src="{{ obj.thumbnail_image.url }}" alt="Placeholder Image" class="h-auto max-w-full rounded-xl" />
     </div>
@@ -32,7 +32,7 @@ Discover the latest insights, tips, and stories from the world of fly fishing. E
       <h2 class="font-bold text-xl py-3">{{obj.title}}</h2>
       <div class="flex flex-row gap-4 cats">
         {% for cat in obj.categories.all %}
-          <a href="#">{{ cat }}</a>
+          <a href="{% url 'category_search' cat %}">{{ cat }}</a>
         {% endfor %}
       </div>
       <p>{{ obj.excerpt }}</p>

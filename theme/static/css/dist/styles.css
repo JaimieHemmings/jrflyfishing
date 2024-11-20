@@ -964,6 +964,14 @@ select {
   flex-basis: 66.666667%;
 }
 
+.basis-3\/4 {
+  flex-basis: 75%;
+}
+
+.basis-1\/4 {
+  flex-basis: 25%;
+}
+
 .border-collapse {
   border-collapse: collapse;
 }
@@ -1176,6 +1184,11 @@ select {
   line-height: 1.25rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -1190,6 +1203,22 @@ select {
 
 .leading-normal {
   line-height: 1.5;
+}
+
+.leading-3 {
+  line-height: .75rem;
+}
+
+.leading-4 {
+  line-height: 1rem;
+}
+
+.leading-5 {
+  line-height: 1.25rem;
+}
+
+.leading-6 {
+  line-height: 1.5rem;
 }
 
 .tracking-normal {
@@ -1254,6 +1283,10 @@ select {
 }
 
 @media (min-width: 768px) {
+  .md\:sticky {
+    position: sticky;
+  }
+
   .md\:max-w-\[50\%\] {
     max-width: 50%;
   }

@@ -13,16 +13,31 @@
 <section class="px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-32 dark-bg-overlay relative z-10"
   style="background-image:url({{article.banner_image.url}}); background-size: cover; background-position: center;">
   <div class="container mx-auto relative z-20">
-    <h1 class="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight sm:text-7xl text-white">
-      {{article.title}}
-    </h1>
-    <p class="mx-auto mt-9 max-w-2xl text-lg sm:mt-6 text-white">
-      {{ article.excerpt }}
-    </p>
+      <h1 class="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight sm:text-7xl text-white">
+        {{article.title}}
+      </h1>
+      <p class="mx-auto mt-9 max-w-2xl text-lg sm:mt-6 text-white">
+        {{ article.excerpt }}
+      </p>
+
   </div>
 </section>
 
-<section class="py-[5rem] container mx-auto article-content p-5">
+<section class="py-[5rem] container mx-auto article-content p-5 flex md:flex-row flex-col gap-4 justify-between">
+  <div class="basis-3/4">
   {{article.text|safe}}
+</div>
+<div class="basis-1/4 relative">
+  <div class="md:sticky top-0">
+    {% for obj in next_articles %}
+    <div class="py-3">
+      <img src="{{ obj.thumbnail_image.url }}" alt="{{ obj.title }}" class="h-auto max-w-full rounded-xl" />
+      <h2 class="text-md pt-3 leading-6">{{ obj.title }}</h2>
+      <p class="text-sm">{{ obj.excerpt }}</p>
+      <a href="{% url 'thought_detail' obj.slug %}" class="button-arrow">Read More <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 </section>
 {% endblock %}

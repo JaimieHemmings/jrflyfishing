@@ -93,6 +93,7 @@ class Thought(models.Model):
 
     categories = models.ManyToManyField(
         Category,
+        related_name='thoughts',
         help_text='Categories of the thought'
         )
 

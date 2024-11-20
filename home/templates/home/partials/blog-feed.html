@@ -10,7 +10,7 @@
         <h2 class="font-bold text-xl py-3">{{obj.title}}</h2>
         <div class="flex flex-row gap-4 cats">
           {% for cat in obj.categories.all %}
-          <a href="#">{{ cat }}</a>
+          <a href="{% url 'category_search' cat %}">{{ cat }}</a>
           {% endfor %}
         </div>
         <p>{{ obj.excerpt }}</p>

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}| Thoughts - Search{% endblock %}
+
+{% block meta_desc %}
+Discover the latest insights, tips, and stories from the world of fly fishing. Explore our thoughts on gear, techniques, and the art of the cast. Dive into the JR Fly Fishing blog today!
+{% endblock %}
+
+{% block content %}
+<section class="px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-32 dark-bg-overlay relative z-10"
+  style="background-image: url('{% static 'home/img/placeholder.webp' %}'); background-size: cover; background-position: center;">
+  <div class="container mx-auto relative z-20">
+
+    <p class="mx-auto -mt-4 max-w-2xl text-lg sm:mt-6 text-white">
+      Welcome to JR Fly Fishing
+    </p>
+    <h1 class="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight sm:text-7xl text-white">
+      About Us
+    </h1>
+    <p class="mx-auto mt-9 max-w-2xl text-lg sm:mt-6 text-white">
+      Experience the art of fly fishing with JR Fly Fishing. Our expert guides, world-class locations, and passion for the sport make every trip unforgettable. Book your adventure today!
+    </p>
+  </div>
+</section>
+<section class="py-[5rem] container mx-auto p-5">
+  {% if page_obj %}
+    {% for obj in page_obj %}
+      
+    <div class="flex flex-col md:flex-row justify-between gap-4 {% if forloop.counter|divisibleby:2 %}md:flex-row-reverse{% endif %}">
+      <div class="md:basis-1/2 p-5">
+        <img src="{{ obj.thumbnail_image.url }}" alt="Placeholder Image" class="h-auto max-w-full rounded-xl" />
+      </div>
+      <div class="md:basis-1/2 flex flex-col justify-center p-5">
+        <h2 class="font-bold text-xl py-3">{{obj.title}}</h2>
+        <div class="flex flex-row gap-4 cats">
+          {% for cat in obj.categories.all %}
+          <a href="{% url 'category_search' cat %}">{{ cat }}</a>
+          {% endfor %}
+        </div>
+        <p>{{ obj.excerpt }}</p>
+        <div class="pt-3">
+          <a href="{% url 'thought_detail' obj.slug %}" class="button-arrow">Read More <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p>No thoughts found.</p>
+  {% endif %}
+</section>
+{% endblock %}
