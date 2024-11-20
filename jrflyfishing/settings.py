@@ -217,6 +217,10 @@ if "USE_AWS" in os.environ:
     'https://jrflyfishing-729c2f10b107.herokuapp.com',
     'http://localhost:8000',
     'http://127.0.0.1:8000/',
+    'http://jrflyfishing.co.uk',
+    'http://www.jrflyfishing.co.uk',
+    'https://jrflyfishing.co.uk',
+    'https://www.jrflyfishing.co.uk',
 ]
 
 # Default primary key field type
