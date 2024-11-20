@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_title %}| Thoughts - Search{% endblock %}
+{% block extra_title %}| Thoughts - Search: {{ category }}{% endblock %}
 
 {% block meta_desc %}
 Discover the latest insights, tips, and stories from the world of fly fishing. Explore our thoughts on gear, techniques, and the art of the cast. Dive into the JR Fly Fishing blog today!
@@ -13,14 +13,11 @@ Discover the latest insights, tips, and stories from the world of fly fishing. E
   <div class="container mx-auto relative z-20">
 
     <p class="mx-auto -mt-4 max-w-2xl text-lg sm:mt-6 text-white">
-      Welcome to JR Fly Fishing
+      Search results for:
     </p>
     <h1 class="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight sm:text-7xl text-white">
-      About Us
+      {{ category }}
     </h1>
-    <p class="mx-auto mt-9 max-w-2xl text-lg sm:mt-6 text-white">
-      Experience the art of fly fishing with JR Fly Fishing. Our expert guides, world-class locations, and passion for the sport make every trip unforgettable. Book your adventure today!
-    </p>
   </div>
 </section>
 <section class="py-[5rem] container mx-auto p-5">
