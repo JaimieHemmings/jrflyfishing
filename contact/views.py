@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .forms import ContactForm
+from thoughts.models import Thought
 
 
 def contact(request):
+    thoughts = Thought.objects.all()[:3]
     form = ContactForm()
     success = False
 
@@ -14,7 +16,8 @@ def contact(request):
 
     context = {
         'form': form,
-        'onSuccess': success
+        'success': success,
+        'thoughts': thoughts,
     }
 
     return render(request, 'contact/contact.html', context)

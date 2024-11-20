@@ -1,29 +1,11 @@
 from django import forms
 from .models import Contact
-from django.core.validators import EmailValidator
 
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = '__all__'
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control'}),
-            'message': forms.Textarea(attrs={'class': 'form-control'}),
-        }
-        labels = {
-            'name': 'Your Name',
-            'email': 'Your Email',
-            'phone': 'Your Phone',
-            'message': 'Your Message',
-        }
-        help_texts = {
-            'name': 'Enter your full name',
-            'email': 'Enter your email address',
-            'phone': 'Enter your phone number',
-            'message': 'Enter your message',
-        }
+        fields = ['name', 'email', 'phone', 'message']
+
         error_messages = {
             'name': {
                 'required': 'This field is required',
@@ -39,3 +21,18 @@ class ContactForm(forms.ModelForm):
                 'required': 'This field is required',
             },
         }
+
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
+
+        placeholders = {
+            'name': 'Your Name',
+            'email': 'Your Email',
+            'phone': 'Your Phone',
+            'message': 'Your Message',
+        }
+
+        for field in self.fields:            
+            self.fields[field].widget.attrs["placeholder"] = placeholders[field]
+            self.fields[field].widget.attrs["required"] = True
+            self.fields[field].label = False

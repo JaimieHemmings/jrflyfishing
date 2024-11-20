@@ -126,3 +126,24 @@ span.line {
     font-size: 1.5rem;
   }
 }
+
+/* Contact Form Styles */
+
+.contact-form {
+
+  legend {
+    font-family: "Fragment Mono", monospace;
+  }
+
+  input {
+    margin-bottom: 1rem;
+    width: 100%;
+    border: 1px solid #eee;
+  }
+
+  textarea {
+    resize: none;
+    width: 100%;
+    border: 1px solid #eee;
+  }
+}
