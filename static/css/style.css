@@ -22,6 +22,56 @@ p {
   background-color: #f6f6f6;
 }
 
+/*
+  Navigation Styles
+*/
+
+.menu-burger {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: 15px;
+  top: 15px;
+  z-index: 99;
+  svg {
+    display: inline;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .menu-burger {
+    display: none;
+  }
+}
+
+.nav-items {
+  padding: 1rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-items {
+    padding: 0;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .nav-items.show {
+    opacity: 1;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    flex-direction: column;
+    background-color: #313638;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 50;
+  }
+}
+
 .dark-bg-overlay:after {
   content: "";
   position: absolute;
