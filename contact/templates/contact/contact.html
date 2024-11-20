@@ -10,5 +10,43 @@ Contact us for more infromation about our services or to enquire about bookings.
 {% endblock %}
 
 {% block content %}
-<h1 class="text-4xl font-semibold text-center py-5">Contact Us</h1>
+<section class="px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-32 dark-bg-overlay relative z-10"
+  style="background-image: url('{% static 'home/img/placeholder.webp' %}'); background-size: cover; background-position: center;">
+  <div class="container mx-auto relative z-20">
+
+    <p class="mx-auto -mt-4 max-w-2xl text-lg sm:mt-6 text-white">
+      Get In Touch
+    </p>
+    <h1 class="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight sm:text-7xl text-white">
+      Contact Us
+    </h1>
+    <p class="mx-auto mt-9 max-w-2xl text-lg sm:mt-6 text-white">
+      Have questions? I'd love to hear from you! Whether you're looking to discuss a guided fishing trip, need more information about my services, or simply want to say hello, feel free to reach out using the contact form below.
+    </p>
+  </div>
+</section>
+<section class="py-[5rem] container mx-auto">
+  {% if form.errors %}
+    <div class="py-3" role="alert">
+      {% for field in form %}
+        {% for error in field.errors %}
+          <p class="inter text-xl font-semibold" style="color: red;">{{ error }}</p>
+        {% endfor %}
+      {% endfor %}
+      {% for error in form.non_field_errors %}
+        <p class="inter text-xl font-semibold" style="color: red;">{{ error }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if success == False %}
+  <form method="POST" action="{% url 'contact' %}">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="font-bold py-2 px-4 rounded">Submit</button>
+  </form>
+  {% else %}
+  <h2>Success</h2>
+  <p>Thank you for reaching out! I'll get back to you as soon as possible.</p>
+  {% endif %}
+</section>
 {% endblock %}

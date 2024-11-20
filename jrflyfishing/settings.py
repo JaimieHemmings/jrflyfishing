@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'ckeditor',
     'storages',
+    'phonenumber_field',
 
     # AllAuth
     'allauth',
