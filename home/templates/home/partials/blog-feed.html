@@ -2,7 +2,7 @@
 <section class="thoughts container mx-auto py-[5rem] flex flex-col justify-between gap-8">
   {% for obj in homepage_thoughts %}
   <div data-aos="fade-up">
-    <div class="flex flex-col md:flex-row justify-between gap-4">
+    <div class="flex flex-col md:flex-row justify-between gap-4 {% if forloop.counter|divisibleby:2 %}md:flex-row-reverse{% endif %}">
       <div class="md:basis-1/2 p-5">
         <img src="{{ obj.thumbnail_image.url }}" alt="Placeholder Image" class="h-auto max-w-full rounded-xl" />
       </div>
