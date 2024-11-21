@@ -289,38 +289,41 @@ class WaveRenderer {
     }
 
     animate() {
-        requestAnimationFrame(this.animate);
+      if(this.isMobile) {
+        return;
+      }
+      requestAnimationFrame(this.animate);
 
-        const currentTime = performance.now();
-        const deltaTime = (currentTime - this.lastTime) / 1000;
-        this.lastTime = currentTime;
+      const currentTime = performance.now();
+      const deltaTime = (currentTime - this.lastTime) / 1000;
+      this.lastTime = currentTime;
 
-        this.updateWaveSource(deltaTime);
-        
-        // Optimize mesh updates
-        const visibleMeshes = this.meshes.filter(mesh => mesh.visible);
-        
-        for (let mesh of visibleMeshes) {
-            mesh.rotation.z += Math.random() / 100;
-            mesh.material.opacity *= 0.98;
-            
-            // Smoother scaling with lerp
-            mesh.scale.x += (1 - mesh.scale.x) * 0.1;
-            mesh.scale.y += (1 - mesh.scale.y) * 0.1;
-            
-            // Hide mesh if opacity is very low
-            if (mesh.material.opacity < 0.01) {
-                mesh.visible = false;
-            }
-        }
-        
-        // Render wave simulation
-        this.renderer.setRenderTarget(this.waveRenderTarget);
-        this.renderer.render(this.scene, this.camera);
-        this.renderer.setRenderTarget(null);
-        
-        // Render final scene
-        this.renderer.render(this.scene2, this.camera);
+      this.updateWaveSource(deltaTime);
+      
+      // Optimize mesh updates
+      const visibleMeshes = this.meshes.filter(mesh => mesh.visible);
+      
+      for (let mesh of visibleMeshes) {
+          mesh.rotation.z += Math.random() / 100;
+          mesh.material.opacity *= 0.98;
+          
+          // Smoother scaling with lerp
+          mesh.scale.x += (1 - mesh.scale.x) * 0.1;
+          mesh.scale.y += (1 - mesh.scale.y) * 0.1;
+          
+          // Hide mesh if opacity is very low
+          if (mesh.material.opacity < 0.01) {
+              mesh.visible = false;
+          }
+      }
+      
+      // Render wave simulation
+      this.renderer.setRenderTarget(this.waveRenderTarget);
+      this.renderer.render(this.scene, this.camera);
+      this.renderer.setRenderTarget(null);
+      
+      // Render final scene
+      this.renderer.render(this.scene2, this.camera);
     }
 
     // Cleanup method

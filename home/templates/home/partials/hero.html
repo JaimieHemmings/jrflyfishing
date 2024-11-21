@@ -1,19 +1,17 @@
 {% load static %}
-<section class="h-screen w-screen relative">
-  <div class="p-5 py-[5rem] w-full h-full z-20 relative flex flex-col justify-center">
-    <div class="container mx-auto relative z-20">
-      <h1 class="font-bold text-5xl md:text-8xl text-white pb-[75px]">
-        JR FLY FISHING
-      </h1>
-      <p class="max-w-[80%] md:max-w-[50%] text-white text-base md:text-2xl font-medium">
-        Immerse yourself in stunning landscapes and crystal-clear waters with expert-guided fly fishing trips. Perfect for all skill levels, learn hands-on techniques while creating lasting memories in the great outdoors.
-      </p>
-      <span class="line"></span>
-      <div class="button-container mt-[3rem] flex flex-row gap-8">
-        <a href="{% url 'about' %}" class="button-arrow">Learn More <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
-        <a href="{% url 'contact' %}" class="button-arrow">Get In Touch <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
-      </div>
+<section class="w-full h-screen z-20 relative hero">
+  <canvas id="webgl" class="absolute top-0 left-0 z-10 max-md:hidden"></canvas>
+  <div class="container mx-auto p-5 h-full flex flex-col justify-center gap-4">
+    <h1 class="font-bold text-5xl md:text-8xl text-white pb-[75px]">
+      JR FLY FISHING
+    </h1>
+    <p class="max-w-[80%] md:max-w-[50%] text-white text-base md:text-2xl font-medium">
+      Immerse yourself in stunning landscapes and crystal-clear waters with expert-guided fly fishing trips. Perfect for all skill levels, learn hands-on techniques while creating lasting memories in the great outdoors.
+    </p>
+    <span class="line"></span>
+    <div class="button-container mt-[3rem] flex flex-row gap-8">
+      <a href="{% url 'about' %}" class="button-arrow">Learn More <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+      <a href="{% url 'contact' %}" class="button-arrow">Get In Touch <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
     </div>
   </div>
-  <canvas id="webgl" class="absolute top-0 left-0 z-10"></canvas>
 </section>
