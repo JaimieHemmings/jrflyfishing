@@ -93,12 +93,13 @@ span.line {
 
 .button-arrow {
   background: #eee;
-  padding: 2px;
+  padding: 4px;
   padding-left: 15px;
   padding-right: 2px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 16px;
   img {
+    margin-top: -2px;
     display: inline;
     border-radius: 50%;
     transition: all 0.3s ease-in-out;

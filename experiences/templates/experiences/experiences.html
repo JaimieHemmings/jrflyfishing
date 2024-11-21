@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta_desc %}
+JR Flyfishing provides guided fishing tours of the best rivers in Cornwall. We offer a range of services including fly fishing lessons, guided fishing trips and more.
+{% endblock %}
+
+{% block title %}
+| Experiences
+{% endblock %}
+
+{% block content %}
+<section class="px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-32 dark-bg-overlay relative z-10"
+  style="background-image: url('{% static 'home/img/placeholder.webp' %}'); background-size: cover; background-position: center;">
+  <div class="container mx-auto relative z-20">
+
+    <p class="mx-auto -mt-4 max-w-2xl text-lg sm:mt-6 text-white">
+      Gain a new understanding of the art of fly fishing
+    </p>
+    <h1 class="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight sm:text-7xl text-white">
+      Experiences
+    </h1>
+    <p class="mx-auto mt-9 max-w-2xl text-lg sm:mt-6 text-white">
+      With expert guidance, access to pristine waters, and a passion for the sport, we'll help you hone your technique, land your dream catch, and immerse yourself in the beauty of nature.
+    </p>
+  </div>
+</section>
+<section>
+  <div class="container flex flex-col md:flex-row mx-auto p-5 gap-4 md:py-[5rem] py-3">
+    <div class="basis-1/2 flex flex-col justify-center">
+      <h2 class="font-semibold text-2xl">Get Started Easily</h2>
+    </div>
+    <div class="basis-1/2 md:text-center text-xl">
+      <p>Embark on an unforgettable flyfishing adventure designed for anglers of all skill levels. Whether you're a seasoned enthusiast looking to refine your technique or a beginner eager to learn the ropes, our guided tours offer expert instruction and hands-on experience.</p>
+    </div>
+  </div>
+  <div class="container flex flex-col md:flex-row mx-auto p-5 gap-4 md:py-[5rem] py-3">
+    <div class="basis-1/4 flex flex-col justify-center">
+      <h3 class="font-semibold text-2xl pb-3">Get Started Easily</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore atque laudantium hic! Harum ipsa fuga consectetur explicabo cum totam sit maxime aliquid sequi quia, officia quibusdam, iure obcaecati incidunt enim.</p>
+    </div>
+    <div class="basis-1/4 flex flex-col justify-center">
+      <h3 class="font-semibold text-2xl pb-3">Get Started Easily</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore atque laudantium hic! Harum ipsa fuga consectetur explicabo cum totam sit maxime aliquid sequi quia, officia quibusdam, iure obcaecati incidunt enim.</p>
+    </div>
+    <div class="basis-1/4 flex flex-col justify-center">
+      <h3 class="font-semibold text-2xl pb-3">Get Started Easily</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore atque laudantium hic! Harum ipsa fuga consectetur explicabo cum totam sit maxime aliquid sequi quia, officia quibusdam, iure obcaecati incidunt enim.</p>
+    </div>
+    <div class="basis-1/4 flex flex-col justify-center">
+      <h3 class="font-semibold text-2xl pb-3">Get Started Easily</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore atque laudantium hic! Harum ipsa fuga consectetur explicabo cum totam sit maxime aliquid sequi quia, officia quibusdam, iure obcaecati incidunt enim.</p>
+    </div>
+  </div>
+</section>
+
+
+{% include 'partials/cta.html' %}
+{% endblock %}

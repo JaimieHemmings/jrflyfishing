@@ -1,0 +1,15 @@
+{% load static %}
+<section class="cta container mx-auto flex flex-col md:flex-row justify-between items-center p-5 md:py-[5rem] py-3">
+  <div class="basis-1/2 p-5 flex flex-col justify-center gap-1 text-center">
+    <h2>Get In Touch</h2>
+    <p class="font-semibold text-2xl">Your adventure starts here</p>
+    <div class="p-5">
+      <a href="{% url 'contact' %}" class="button-arrow">Get In Touch <img src="{% static 'img/arrow.jpg' %}" alt="Arrow Icon" /></a>
+    </div>
+  </div>
+  <div class="basis-1/2">
+    <div class="w-full h-full">
+      <img src="{% static 'home/img/man-fishing.webp' %}" alt="cta image" class="rounded-xl w-full h-full object-cover" />
+    </div>
+  </div>
+</section>
