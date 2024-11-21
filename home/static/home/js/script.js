@@ -208,17 +208,20 @@ class WaveRenderer {
         this.sizes.width = window.innerWidth;
         this.sizes.height = window.innerHeight;
         
-        this.renderer.setSize(this.sizes.width, this.sizes.height);
-        
-        const aspect = this.sizes.width / this.sizes.height;
-        this.camera.left = (this.frustumSize * aspect) / -2;
-        this.camera.right = (this.frustumSize * aspect) / 2;
-        this.camera.top = this.frustumSize / 2;
-        this.camera.bottom = this.frustumSize / -2;
-        this.camera.updateProjectionMatrix();
-        
-        this.updateImagePlaneScale();
-        this.waveRenderTarget.setSize(this.sizes.width, this.sizes.height);
+        if (this.sizes.width > 768 )
+        {
+            this.renderer.setSize(this.sizes.width, this.sizes.height);
+            
+            const aspect = this.sizes.width / this.sizes.height;
+            this.camera.left = (this.frustumSize * aspect) / -2;
+            this.camera.right = (this.frustumSize * aspect) / 2;
+            this.camera.top = this.frustumSize / 2;
+            this.camera.bottom = this.frustumSize / -2;
+            this.camera.updateProjectionMatrix();
+            
+            this.updateImagePlaneScale();
+            this.waveRenderTarget.setSize(this.sizes.width, this.sizes.height);
+        }    
     }
 
     updateImagePlaneScale() {
