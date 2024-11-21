@@ -1,7 +1,12 @@
 import * as THREE from 'three';
 
 class WaveRenderer {
+    isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
     constructor(brushFile, bgImage) {
+        this.isMobile = this.isMobileDevice();
         // Performance optimization: Use requestIdleCallback for initialization
         if ('requestIdleCallback' in window) {
             window.requestIdleCallback(this.init.bind(this, { brushFile, bgImage }));
@@ -205,23 +210,22 @@ class WaveRenderer {
     }
 
     handleResize() {
+        if (this.isMobile) {
+            return;
+        }
         this.sizes.width = window.innerWidth;
         this.sizes.height = window.innerHeight;
+        this.renderer.setSize(this.sizes.width, this.sizes.height);
         
-        if (this.sizes.width > 768 )
-        {
-            this.renderer.setSize(this.sizes.width, this.sizes.height);
-            
-            const aspect = this.sizes.width / this.sizes.height;
-            this.camera.left = (this.frustumSize * aspect) / -2;
-            this.camera.right = (this.frustumSize * aspect) / 2;
-            this.camera.top = this.frustumSize / 2;
-            this.camera.bottom = this.frustumSize / -2;
-            this.camera.updateProjectionMatrix();
-            
-            this.updateImagePlaneScale();
-            this.waveRenderTarget.setSize(this.sizes.width, this.sizes.height);
-        }    
+        const aspect = this.sizes.width / this.sizes.height;
+        this.camera.left = (this.frustumSize * aspect) / -2;
+        this.camera.right = (this.frustumSize * aspect) / 2;
+        this.camera.top = this.frustumSize / 2;
+        this.camera.bottom = this.frustumSize / -2;
+        this.camera.updateProjectionMatrix();
+        
+        this.updateImagePlaneScale();
+        this.waveRenderTarget.setSize(this.sizes.width, this.sizes.height);
     }
 
     updateImagePlaneScale() {
