@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Experience
 
 def experiences(request):
-    experiences = Experience.objects.all().sort_by('-created_at')
+    experiences = Experience.objects.all()
     context = {
         'experiences': experiences
     }
