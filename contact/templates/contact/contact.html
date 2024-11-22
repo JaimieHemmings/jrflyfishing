@@ -75,6 +75,7 @@ Contact us for more infromation about our services or to enquire about bookings.
       {% if success == False %}
       <form method="POST" action="{% url 'contact' %}" class="contact-form">
         {% csrf_token %}
+        <h2 class="text-base">Get In Touch</h2>
         <fieldset>
           <legend class="text-2xl font-semibold pb-5">Contact Form</legend>
           {{ form }}
@@ -89,6 +90,7 @@ Contact us for more infromation about our services or to enquire about bookings.
       {% endif %}
     </div>
     <div class="basis-1/2 p-5">
+      <h2 class="text-2xl pb-5 font-semibold">Thoughts</h2>
       {% for obj in thoughts %}
       <div class="py-3">
         <a class="flex flex-col md:flex-row justify-between gap-4" href="{% url 'thought_detail' obj.slug %}" >
