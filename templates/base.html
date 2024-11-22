@@ -29,6 +29,20 @@
   {% endblock %}
 
   {% block core_js %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4JLQ18T8FV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500,
+    });  
+    gtag('js', new Date());
+    gtag('config', 'G-4JLQ18T8FV');
+  </script>
   <script src="{% static 'js/nav.js' %}"></script>
   {% endblock %}
 
@@ -48,8 +62,20 @@
   {% endblock %}
 
   {% include 'partials/footer.html' %}
+  <div class="ga-consent-banner fixed bottom-0 z-50 w-full bg-white p-5 hidden" id="cookie-consent">
+    <div class="container mx-auto flex flex-row justify-between">
+      <div class="">
+        <h2 class="inter text-2xl font-semibold">Cookies Consent</h2>
+        <p class="inter opacity-[0.6]">We use cookies to ensure that we give you the best experience on our website.</p>
+      </div>
+      <div class="flex justify-center flex-col">
+        <button class="bg-primary px-4 py-2 rounded-md inter font-semibold hover:opacity-[0.6]" id="accept-cookies">Okay</button>
+      </div>
+    </div>
+  </div>
 
   {% block postload_js %}
+  <script src="{% static 'js/cookies-consent.js' %}"></script>
   {% endblock %}
 </body>
 </html>
