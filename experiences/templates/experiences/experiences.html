@@ -26,7 +26,7 @@ JR Flyfishing provides guided fishing tours of the best rivers in Cornwall. We o
   </div>
 </section>
 <section>
-  <div class="container flex flex-col md:flex-row mx-auto p-5 gap-4 md:py-[5rem] py-3">
+  <div class="container flex flex-col md:flex-row mx-auto p-5 gap-4 py-[5rem]">
     <div class="basis-1/2 flex flex-col justify-center">
       <h2 class="font-semibold text-2xl">Get Started Easily</h2>
     </div>
@@ -54,6 +54,17 @@ JR Flyfishing provides guided fishing tours of the best rivers in Cornwall. We o
   </div>
 </section>
 
-
+<section class="py-[5rem] flex max-md:flex-col flex-wrap container mx-auto service-list">
+  {% if experiences %}
+  {% for experience in experiences %}
+  <a href="{% url 'experience_detail' experience.slug %}" class="basis-1/2 p-5 py-[5rem] service-breif" style="background-image: url('{{ experience.thumbnail.url }}')">
+    <h2 class="font-semibold py-5">{{ experience.title }}</h2>
+    <p class="z-20 relative">{{ experience.excerpt }}</p>
+  </a>
+  {% endfor %}
+  {% else %}
+  <p>No experiences defined</p>
+  {% endif %}
+</section>
 {% include 'partials/cta.html' %}
 {% endblock %}
