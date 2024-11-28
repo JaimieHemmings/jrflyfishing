@@ -127,28 +127,6 @@ const updateImagePlaneScale = () => {
         imagePlane.scale.x = 2000 * (sizes.height / 1333);
     }    
 };
-updateImagePlaneScale();
-
-// Resize event listener
-window.addEventListener('resize', () => {
-    // Update the camera including the fustrums
-    sizes.width   = window.innerWidth;
-    sizes.height  = window.innerHeight;
-
-    frustumSize   = sizes.height;
-
-    renderer.setSize(sizes.width, sizes.height);
-
-    camera.left   = (frustumSize * sizes.width / sizes.height) / -2;
-    camera.right  = (frustumSize * sizes.width / sizes.height) / 2;
-
-    camera.top    = frustumSize / 2;
-    camera.bottom = frustumSize / -2;
-    camera.updateProjectionMatrix();
-
-    // Update the image plane scale
-    updateImagePlaneScale();
-});
 
 // Animation loop
 const animate = () => {
@@ -168,4 +146,29 @@ const animate = () => {
     renderWaveSimulationToTexture();
     renderer.render(scene2, camera);
 };
-animate();
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateImagePlaneScale();
+    
+    // Resize event listener
+    window.addEventListener('resize', () => {
+        // Update the camera including the fustrums
+        sizes.width   = window.innerWidth;
+        sizes.height  = window.innerHeight;
+    
+        frustumSize   = sizes.height;
+    
+        renderer.setSize(sizes.width, sizes.height);
+    
+        camera.left   = (frustumSize * sizes.width / sizes.height) / -2;
+        camera.right  = (frustumSize * sizes.width / sizes.height) / 2;
+    
+        camera.top    = frustumSize / 2;
+        camera.bottom = frustumSize / -2;
+        camera.updateProjectionMatrix();
+    
+        // Update the image plane scale
+        updateImagePlaneScale();
+    });
+    animate();
+});
