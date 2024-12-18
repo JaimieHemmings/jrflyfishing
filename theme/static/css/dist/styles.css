@@ -996,6 +996,10 @@ select {
   flex-basis: 80%;
 }
 
+.basis-\[calc\(50\%-2\.5rem\)\] {
+  flex-basis: calc(50% - 2.5rem);
+}
+
 .border-collapse {
   border-collapse: collapse;
 }
@@ -1320,6 +1324,42 @@ select {
 
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  .md\:container {
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .md\:container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .md\:container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .md\:container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .md\:container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .md\:container {
+      max-width: 1536px;
+    }
+  }
 }
 
 .hover\:bg-white:hover {

@@ -54,12 +54,16 @@ JR Flyfishing provides guided fishing tours of the best rivers in Cornwall. We o
   </div>
 </section>
 
-<section class="py-[5rem] flex max-md:flex-col flex-wrap container mx-auto service-list">
+<section class="py-[5rem] gap-8 flex max-md:flex-col flex-wrap container mx-auto service-list">
   {% if experiences %}
   {% for experience in experiences %}
-  <a href="{% url 'experience_detail' experience.slug %}" class="overflow-hidden rounded-3xl basis-1/2 p-5 py-[5rem] service-breif" style="background-image: url('{{ experience.thumbnail.url }}')">
-    <h2 class="font-semibold py-5 text-2xl">{{ experience.title }}</h2>
-    <p class="z-20 relative font-semibold">{{ experience.excerpt }}</p>
+  <a href="{% url 'experience_detail' experience.slug %}" class="overflow-hidden rounded-3xl basis-[calc(50%-2.5rem)] p-5 py-[5rem] service-breif" style="background-image: url('{{ experience.thumbnail.url }}')">
+    <h2 class="font-semibold py-5 text-2xl">
+      {{ experience.title }}
+    </h2>
+    <p class="z-20 relative font-semibold">
+      {{ experience.excerpt }}
+    </p>
   </a>
   {% endfor %}
   {% else %}

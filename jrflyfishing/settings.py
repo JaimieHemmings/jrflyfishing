@@ -1,10 +1,13 @@
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from .env file
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -13,8 +16,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY =  os.environ.get("SECRET_KEY", 'django-insecure-k5exwfb-#iy)f7sfh#o#m(m*=p$yhsi)zs4f4fnjw1+@^ow%r!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG = 'DEVELOPMENT' in os.environ
+# Print Debug
+print(f"DEBUG: {DEBUG}")
 ALLOWED_HOSTS = [
     "https://jrflyfishing-729c2f10b107.herokuapp.com",
     ".herokuapp.com",
